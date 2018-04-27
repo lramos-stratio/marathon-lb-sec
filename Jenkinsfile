@@ -24,7 +24,11 @@ hose {
 
     INSTALLPARAMETERS = """
                     | -DDCOS_CLI_HOST=%%DCOSCLI#0
-                    | """.stripMargin().stripIndent()
+                    | -DBOOTSTRAP_IP=10.200.0.155
+		    | -DDCOS_IP=10.200.0.156
+		    | """.stripMargin().stripIndent()
+                    
+
 
     DEV = { config ->
         doDocker(config)
