@@ -6,7 +6,6 @@ import cucumber.api.CucumberOptions;
 import org.testng.annotations.Test;
 
 @CucumberOptions(features = {
-        "src/test/resources/features/functionalAT/MARATHONLB_1386/00_MARATHONLB_1386_DefaultCertificate.feature",
         "src/test/resources/features/functionalAT/MARATHONLB_1386/01_MARATHONLB_1386_AppCertificate.feature",
         "src/test/resources/features/functionalAT/MARATHONLB_1386/02_MARATHONLB_1386_ClientCertificate.feature"
 })

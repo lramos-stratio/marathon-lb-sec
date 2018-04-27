@@ -26,6 +26,7 @@ hose {
                     | -DDCOS_CLI_HOST=%%DCOSCLI#0
                     | -DBOOTSTRAP_IP=10.200.0.155
 		    | -DDCOS_IP=10.200.0.156
+		    | -DINSTALL_MARATHON=false
 		    | """.stripMargin().stripIndent()
                     
 
