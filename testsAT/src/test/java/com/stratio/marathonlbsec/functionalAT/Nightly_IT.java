@@ -13,6 +13,7 @@ import com.stratio.qa.data.BrowsersDataProvider;
         "src/test/resources/features/functionalAT/MARATHONLB_1386/02_MARATHONLB_1386_ClientCertificate.feature",
         "src/test/resources/features/functionalAT/MARATHONLB_1388/MARATHONLB_1388_CentralizedLogs.feature"
         //"src/test/resources/features/functionalAT/purge.feature"
+
 })
 public class Nightly_IT extends BaseTest {
 
