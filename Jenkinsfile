@@ -37,6 +37,12 @@ hose {
     }
 
     INSTALL = { config ->
-        doAT(conf: config, groups: ['nightly'])
-    }
+       if (config.INSTALLPARAMETERS.contains('GROUPS_MARATHONLB')) {
+           config.INSTALLPARAMETERS = "${config.INSTALLPARAMETERS}".replaceAll('-DGROUPS_MARATHONLB', '-Dgroups')
+	       doAT(conf: config)
+       } else {
+           doAT(conf: config, groups: ['nightly'])
+         }
+     }
+
 }
