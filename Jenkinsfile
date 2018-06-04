@@ -19,18 +19,30 @@ hose {
                                       'DCOS_PASSWORD=1234',
                                       'BOOTSTRAP_USER=operador',
                                       'PEM_FILE_PATH=/paascerts/PaasIntegration.pem'],
-                           'sleep':  10]]
+                           'sleep':  120,
+			   'healthcheck': 5000]]
         ]
 
     INSTALLPARAMETERS = """
                     | -DDCOS_CLI_HOST=%%DCOSCLI#0
-                    | """.stripMargin().stripIndent()
+                    | -DBOOTSTRAP_IP=10.200.0.155
+		    | -DDCOS_IP=10.200.0.156
+		    | -DINSTALL_MARATHON=false
+		    | """.stripMargin().stripIndent()
+                    
+
 
     DEV = { config ->
         doDocker(config)
     }
 
     INSTALL = { config ->
-        doAT(conf: config, groups: ['nightly'])
-    }
+       if (config.INSTALLPARAMETERS.contains('GROUPS_MARATHONLB')) {
+           config.INSTALLPARAMETERS = "${config.INSTALLPARAMETERS}".replaceAll('-DGROUPS_MARATHONLB', '-Dgroups')
+	       doAT(conf: config)
+       } else {
+           doAT(conf: config, groups: ['nightly'])
+         }
+     }
+
 }
